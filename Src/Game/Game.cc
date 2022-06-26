@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Game/Game.h"
 
 Game::Game(QObject *parent)
     : QObject{parent}

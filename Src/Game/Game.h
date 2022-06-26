@@ -28,25 +28,29 @@ signals:
 protected:
     bool            m_isRunning = false;
 
-//    //数据采集方式
-//public:
-//    enum CaptureMethod
-//    {
-//        None = 0,
-//        NetWorkUDP,
-//        SharedMemory,
-//        UDPAndSM,
-//        Other,
-//    };
-//    Q_ENUMS(CaptureMethod)
-//    Q_PROPERTY(CaptureMethod captureMethod READ captureMethod CONSTANT)
-//protected:
-//    CaptureMethod   m_captureMethod = None;
+    //数据采集方式
+public:
+    enum CaptureMethod
+    {
+        None = 0,
+        NetWorkUDP,
+        SharedMemory,
+        UDPAndSM,
+        Other,
+    };
+    Q_ENUM(CaptureMethod)
+    Q_PROPERTY(CaptureMethod captureMethod READ captureMethod CONSTANT)
+    CaptureMethod captureMethod() const { return m_captureMethod; }
+protected:
+    CaptureMethod   m_captureMethod = None;
 
     //进程名称
 public:
     const QSet<QString>&    processNames() const;
     void setProcessNames(const QSet<QString>& names);
+    bool isRunning() const;
+    void setIsRunning(bool newIsRunning);
+
 protected:
     QSet<QString>   m_processName;
 

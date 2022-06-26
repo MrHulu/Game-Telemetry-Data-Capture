@@ -26,7 +26,7 @@ target_include_directories(Game-Telemetry-Data-Capture PUBLIC
     Qt5::Core Qt5::Quick Qt5::QuickControls2 #${GUI_SRC_PATH}
 	)
 target_link_libraries(Game-Telemetry-Data-Capture PRIVATE
-    Qt5::Core Qt5::Quick Qt5::QuickControls2
+    Qt5::Core Qt5::Quick Qt5::QuickControls2 Game
     )
 #add_custom_command(TARGET Game-Telemetry-Data-Capture
 #    DEPENDS ${QM_FILES}
