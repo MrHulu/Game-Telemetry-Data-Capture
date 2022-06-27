@@ -21,6 +21,10 @@ target_sources(Game PRIVATE
     "Src/Game/GameWithUdp.cc"
     "Src/Game/Game.h"
     "Src/Game/Game.cc"
+    "Src/Game/Capturer.h"
+    "Src/Game/Capturer.cc"
+    "Src/Game/TelemetryDataBuffer.h"
+    "Src/Game/TelemetryDataBuffer.cc"
     )
 set_target_properties(Game PROPERTIES
     AUTOUIC ON
@@ -30,7 +34,28 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
-    Qt5::Core Qt5::Network)
+    Qt5::Core
+    ACGame)
+
+
+# ------ Assetto Corsa --------
+add_library(ACGame STATIC)
+target_sources(ACGame PRIVATE
+    "Src/Game/Assetto Corsa/ACGame.h"
+    "Src/Game/Assetto Corsa/ACGame.cc"
+    "Src/Game/Assetto Corsa/ACTelemetryDataCapturer.h"
+    "Src/Game/Assetto Corsa/ACTelemetryDataCapturer.cc"
+    "Src/Game/Assetto Corsa/SharedMemoryPacket.h"
+    )
+set_target_properties(ACGame PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_link_libraries(ACGame PRIVATE
+    Qt5::Core)
 
 
 add_subdirectory(Src)

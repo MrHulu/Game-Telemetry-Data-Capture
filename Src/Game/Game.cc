@@ -6,6 +6,11 @@ Game::Game(QObject *parent)
 
 }
 
+Game::~Game()
+{
+
+}
+
 void Game::setIsRunnig(bool newIsRunning)
 {
     if(m_isRunning == newIsRunning)

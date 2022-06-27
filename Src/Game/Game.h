@@ -8,6 +8,7 @@ class Game : public QObject
     Q_OBJECT
 public:
     explicit Game(QObject *parent = nullptr);
+    ~Game();
     Q_INVOKABLE virtual void startCapturer() = 0;
     Q_INVOKABLE virtual void stopCapturer() = 0;
 
