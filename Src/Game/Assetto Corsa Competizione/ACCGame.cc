@@ -1,15 +1,14 @@
-#include "Game/Assetto Corsa/ACGame.h"
+#include "Game/Assetto Corsa Competizione/ACCGame.h"
 
-
-void ACGame::startCapturer()
+void ACCGame::startCapturer()
 {
-    m_GameCapturer = new ACTelemetryDataCapturer;
+    m_GameCapturer = new ACCTelemetryDataCapturer;
     m_GameCapturer->start();
     connect(m_GameCapturer, &QThread::finished, m_GameCapturer, &QObject::deleteLater);
     connect(m_GameCapturer, &QThread::finished, this, [&]{ m_GameCapturer = nullptr; });
 }
 
-void ACGame::stopCapturer()
+void ACCGame::stopCapturer()
 {
     if(!m_GameCapturer)
         return;
@@ -17,14 +16,14 @@ void ACGame::stopCapturer()
 }
 
 
-ACGame::ACGame(QObject *parent) : Game{parent}
+ACCGame::ACCGame(QObject *parent) : Game{parent}
 {
-    m_name = "Assetto Corsa";
+    m_name = "Assetto Corsa Competizione";
     m_captureMethod = SharedMemory;
-    m_processName << "acs.exe" << "AssettoCorsa.exe";
+    m_processName << "acc.exe";
 }
 
-ACGame::~ACGame()
+ACCGame::~ACCGame()
 {
     if(!m_GameCapturer)
         return;

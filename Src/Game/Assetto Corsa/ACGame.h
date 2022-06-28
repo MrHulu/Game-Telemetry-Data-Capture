@@ -14,7 +14,6 @@ public:
 
 private:
     ACTelemetryDataCapturer *m_GameCapturer = nullptr;
-
 };
 
 

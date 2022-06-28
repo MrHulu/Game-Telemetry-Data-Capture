@@ -1,15 +1,16 @@
-#include "Game/Assetto Corsa/ACTelemetryDataCapturer.h"
+#include "Game/Assetto Corsa Competizione/ACCTelemetryDataCapturer.h"
 
 #include <Windows.h>
-
 #include <QMap>
 #include <QVariant>
 #include <QDebug>
 #include <QThread>
 
-using namespace AC;
+#include <windows.h>
 
-ACTelemetryDataCapturer::ACTelemetryDataCapturer(QObject *parent)
+using namespace ACC;
+
+ACCTelemetryDataCapturer::ACCTelemetryDataCapturer(QObject *parent)
 {
 
 }
@@ -24,17 +25,17 @@ public:
         CloseHandle(MapFile);
     }
     HANDLE MapFile;
-    SPageFileGraphic* rawData;
+    ACC::SPageFileGraphic* rawData;
 private:
     HANDLE getMapFile() {
-        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(SPageFileGraphic), szName);
+        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(ACC::SPageFileGraphic), szName);
         if (!MapFile)
             throw "Create Graphic Mapping Fail";
         else
             return MapFile;
     }
-    SPageFileGraphic* getRawData() {
-        auto rawData = static_cast<SPageFileGraphic*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(SPageFileGraphic)));
+    ACC::SPageFileGraphic* getRawData() {
+        auto rawData = static_cast<ACC::SPageFileGraphic*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(ACC::SPageFileGraphic)));
         if (!rawData)
             throw "Mapping Fail";
         else
@@ -52,17 +53,17 @@ public:
         CloseHandle(MapFile);
     }
     HANDLE MapFile;
-    SPageFilePhysics* rawData;
+    ACC::SPageFilePhysics* rawData;
 private:
     HANDLE getMapFile() {
-        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(SPageFilePhysics), szName);
+        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(ACC::SPageFilePhysics), szName);
         if (!MapFile)
-            throw "Create Pysics Mapping Fail";
+            throw "Create Graphic Mapping Fail";
         else
             return MapFile;
     }
-    SPageFilePhysics* getRawData() {
-        auto rawData = static_cast<SPageFilePhysics*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(SPageFilePhysics)));
+    ACC::SPageFilePhysics* getRawData() {
+        auto rawData = static_cast<ACC::SPageFilePhysics*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(ACC::SPageFilePhysics)));
         if (!rawData)
             throw "Mapping Fail";
         else
@@ -80,17 +81,17 @@ public:
         CloseHandle(MapFile);
     }
     HANDLE MapFile;
-    SPageFileStatic* rawData;
+    ACC::SPageFileStatic* rawData;
 private:
     HANDLE getMapFile() {
-        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(SPageFileStatic), szName);
+        auto MapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, sizeof(ACC::SPageFileStatic), szName);
         if (!MapFile)
-            throw "Create Static Mapping Fail";
+            throw "Create Graphic Mapping Fail";
         else
             return MapFile;
     }
-    SPageFileStatic* getRawData() {
-        auto rawData = static_cast<SPageFileStatic*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(SPageFileStatic)));
+    ACC::SPageFileStatic* getRawData() {
+        auto rawData = static_cast<ACC::SPageFileStatic*>(MapViewOfFile(MapFile, FILE_MAP_READ, 0, 0, sizeof(ACC::SPageFileStatic)));
         if (!rawData)
             throw "Mapping Fail";
         else
@@ -99,7 +100,7 @@ private:
 };
 
 
-void ACTelemetryDataCapturer::captureAndCompare()
+void ACCTelemetryDataCapturer::captureAndCompare()
 {
     auto Graphic = m_graphics->rawData;
     auto Physics = m_physics->rawData;
@@ -157,13 +158,13 @@ void ACTelemetryDataCapturer::captureAndCompare()
     Capturer::lastTelemetryData.update(changeData);
 }
 
-void ACTelemetryDataCapturer::run()
+void ACCTelemetryDataCapturer::run()
 try{
     m_graphics.reset(new SMGraphicsElement());
     m_physics.reset(new SMPysicsElement());
     m_static.reset(new SMStaticElement());
 
-    qInfo()<<"start AC capture!";
+    qDebug()<<"start ACC capture!";
 
     while(m_flag)
     {
@@ -174,15 +175,12 @@ try{
     TelemetryDataBuffer::Instance().remove();
     lastTelemetryData.remove();
 
+
     m_graphics.release();
     m_physics.release();
     m_static.release();
 }catch(const char *msg){
-    qWarning()<<"throw: "<<msg;
-    TelemetryDataBuffer::Instance().remove();
-    lastTelemetryData.remove();
-    return;
+    qDebug()<<"异常："<<msg;
+    return ;
 }
-
-
 

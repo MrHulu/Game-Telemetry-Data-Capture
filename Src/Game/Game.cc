@@ -25,3 +25,11 @@ void Game::setProcessNames(const QSet<QString>& names)
         return;
     m_processName = names;
 }
+
+void Game::setInstallPath(const QString &newInstallPath)
+{
+    if(m_installPath == newInstallPath)
+        return;
+    m_installPath = newInstallPath;
+    emit installPathChanged();
+}

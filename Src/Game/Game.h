@@ -13,16 +13,16 @@ public:
     Q_INVOKABLE virtual void stopCapturer() = 0;
 
     //游戏名称
-public:
     Q_PROPERTY(QString name READ name CONSTANT)
-    const QString&  name() const { return m_name; }
+public:
+    QString name() const;
 protected:
     QString         m_name;
 
     //游戏是否运行
-public:
     Q_PROPERTY(bool isRunning READ isRunning WRITE setIsRunning NOTIFY isRunningChanged)
-    bool isRunnig() const { return m_isRunning; }
+public:
+    bool isRunnig() const;
     void setIsRunnig(bool newIsRunning);
 signals:
     void isRunningChanged();
@@ -47,13 +47,31 @@ protected:
 
     //进程名称
 public:
-    const QSet<QString>&    processNames() const;
+    QSet<QString>   processNames() const;
     void setProcessNames(const QSet<QString>& names);
     bool isRunning() const;
     void setIsRunning(bool newIsRunning);
-
 protected:
     QSet<QString>   m_processName;
 
+    //安装路径
+    Q_PROPERTY(QString installPath READ installPath WRITE setInstallPath NOTIFY installPathChanged)
+public:
+    QString installPath() const;;
+    void setInstallPath(const QString& newInstallPath);
+signals:
+    void installPathChanged();
+protected:
+    QString m_installPath;
+
 };
+
+
+inline QString Game::name() const { return m_name; }
+
+inline bool Game::isRunnig() const { return m_isRunning; }
+
+inline QSet<QString> Game::processNames() const { return m_processName; }
+
+inline QString Game::installPath() const { return m_installPath; }
 

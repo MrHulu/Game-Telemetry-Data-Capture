@@ -35,7 +35,7 @@ set_target_properties(Game PROPERTIES
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
     Qt5::Core
-    ACGame)
+    ACGame ACCGame)
 
 
 # ------ Assetto Corsa --------
@@ -55,6 +55,26 @@ set_target_properties(ACGame PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(ACGame PRIVATE
+    Qt5::Core)
+
+
+# ------ Assetto Corsa Competizione --------
+add_library(ACCGame STATIC)
+target_sources(ACCGame PRIVATE
+    "Src/Game/Assetto Corsa Competizione/ACCGame.h"
+    "Src/Game/Assetto Corsa Competizione/ACCGame.cc"
+    "Src/Game/Assetto Corsa Competizione/ACCTelemetryDataCapturer.h"
+    "Src/Game/Assetto Corsa Competizione/ACCTelemetryDataCapturer.cc"
+    "Src/Game/Assetto Corsa Competizione/SharedMemoryPacket.h"
+    )
+set_target_properties(ACCGame PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_link_libraries(ACCGame PRIVATE
     Qt5::Core)
 
 
