@@ -3,7 +3,13 @@ cmake_minimum_required(VERSION 3.14)
 find_package(Qt5 COMPONENTS Core Widgets Quick QuickControls2 REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
+
 set(SOFTWARE_NAME "Telemetry Data Capture Tool")
+
+set(X_VERSION "0")
+set(Y_VERSION "0")
+set(Z_VERSION "2")
+set(SOFTWARE_VERSION "${X_VERSION}.${Y_VERSION}.${Z_VERSION}")
 
 enable_testing()
 
@@ -37,3 +43,9 @@ target_link_libraries(Game-Telemetry-Data-Capture PRIVATE
 #    DEPENDS ${ROOT_BIN_PATH}/resource.rcc
 #    COMMAND (xcopy resource.rcc "src" /D /Y)
 #    WORKING_DIRECTORY ${ROOT_BIN_PATH})
+
+
+configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/Build/package.json.cmakein
+    ${ROOT_SRC_PATH}/package.json
+    @ONLY)
