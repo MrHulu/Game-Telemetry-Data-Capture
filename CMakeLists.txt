@@ -18,12 +18,14 @@ find_package(Qt5 COMPONENTS Gui Core Network REQUIRED)
 # -------   Game   -----------
 add_library(Game STATIC)
 target_sources(Game PRIVATE
-    "Src/Game/GameWithUdp.h"
-    "Src/Game/GameWithUdp.cc"
     "Src/Game/Game.h"
     "Src/Game/Game.cc"
+    "Src/Game/GameWithUdp.h"
+    "Src/Game/GameWithUdp.cc"
     "Src/Game/Capturer.h"
     "Src/Game/Capturer.cc"
+    "Src/Game/CapturerWithUdp.h"
+    "Src/Game/CapturerWithUdp.cc"
     "Src/Game/TelemetryDataBuffer.h"
     "Src/Game/TelemetryDataBuffer.cc"
     )
@@ -35,7 +37,7 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
-    Qt5::Core
+    Qt5::Core Qt5::Network
     ACGame ACCGame)
 
 

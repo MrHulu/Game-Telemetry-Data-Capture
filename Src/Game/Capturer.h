@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Game/TelemetryDataBuffer.h"
 
@@ -15,10 +15,6 @@ public:
 
 protected:
     TelemetryDataBuffer lastTelemetryData;
-
-signals:
-
-private:
 
 };
 

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <QSet>
 #include <QObject>
@@ -12,9 +12,12 @@ public:
     Q_INVOKABLE virtual void startCapturer() = 0;
     Q_INVOKABLE virtual void stopCapturer() = 0;
 
+signals:
+    void errorOccurred(const QString& message);
+
     //游戏名称
-    Q_PROPERTY(QString name READ name CONSTANT)
 public:
+    Q_PROPERTY(QString name READ name CONSTANT)
     QString name() const;
 protected:
     QString         m_name;

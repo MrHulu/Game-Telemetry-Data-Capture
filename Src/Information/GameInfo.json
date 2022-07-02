@@ -1,0 +1,24 @@
+﻿{
+    "version": "1.0.0",
+
+    "changeTime": "2022-07-01 00:00:00",
+
+    "Assetto Corsa": {
+        "installPath": "",
+        "processName": [ "acs.exe", "AssettoCorsa.exe" ]
+    },
+    "Assetto Corsa Competizione": {
+        "installPath": "",
+        "processName": [ "acc.exe" ]
+    },
+    "DiRT Rally 2.0": {
+        "installPath": "",
+        "processName": [ "dirtrally2.exe" ],
+        "UDP": {
+            "port": 20777,
+            "ipAddress": "127.0.0.1",
+            "sendPort": 21400,
+            "sendIpAddress": "127.0.0.1"
+        }
+    }
+}
