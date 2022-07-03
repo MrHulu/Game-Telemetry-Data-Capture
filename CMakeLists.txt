@@ -38,7 +38,7 @@ set_target_properties(Game PROPERTIES
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
     Qt5::Core Qt5::Network
-    ACGame ACCGame)
+    ACGame ACCGame Dirt2Game)
 
 
 # ------ Assetto Corsa --------
@@ -79,6 +79,26 @@ set_target_properties(ACCGame PROPERTIES
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(ACCGame PRIVATE
     Qt5::Core)
+
+
+# ------ DiRT Rally 2.0 --------
+add_library(Dirt2Game STATIC)
+target_sources(Dirt2Game PRIVATE
+    "Src/Game/DiRT Rally 2.0/DirtRally2Game.h"
+    "Src/Game/DiRT Rally 2.0/DirtRally2Game.cc"
+    "Src/Game/DiRT Rally 2.0/DirtRally2TelemetryDataCapturer.h"
+    "Src/Game/DiRT Rally 2.0/DirtRally2TelemetryDataCapturer.cc"
+    "Src/Game/DiRT Rally 2.0/UdpPacket.h"
+    )
+set_target_properties(Dirt2Game PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_link_libraries(Dirt2Game PRIVATE
+    Qt5::Core Qt5::Network)
 
 
 add_subdirectory(Src)
