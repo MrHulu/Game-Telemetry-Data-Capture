@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Game/CapturerWithUdp.h"
-#include "Game/Dirt Rally 2.0/UdpPacket.h"
+#include "Game/DiRT Rally 2.0/UdpPacket.h"
 
 #include <queue>
 

@@ -1,4 +1,4 @@
-﻿#include "Game/Dirt Rally 2.0/DirtRally2Game.h"
+﻿#include "Game/DiRT Rally 2.0/DirtRally2Game.h"
 
 
 void DirtRally2Game::startCapturer()

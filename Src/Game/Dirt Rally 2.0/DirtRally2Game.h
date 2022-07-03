@@ -1,6 +1,6 @@
 ﻿#pragma once
 #include "Game/GameWithUdp.h"
-#include "Game/Dirt Rally 2.0/DirtRally2TelemetryDataCapturer.h"
+#include "Game/DiRT Rally 2.0/DirtRally2TelemetryDataCapturer.h"
 
 class DirtRally2Game : public GameWithUdp
 {
