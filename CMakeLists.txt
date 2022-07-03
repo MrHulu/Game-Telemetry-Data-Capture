@@ -38,7 +38,8 @@ set_target_properties(Game PROPERTIES
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
     Qt5::Core Qt5::Network
-    ACGame ACCGame Dirt2Game)
+    ACGame ACCGame
+    Dirt2Game Dirt4Game)
 
 
 # ------ Assetto Corsa --------
@@ -98,6 +99,26 @@ set_target_properties(Dirt2Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Dirt2Game PRIVATE
+    Qt5::Core Qt5::Network)
+
+
+# ------ DiRT 4 --------
+add_library(Dirt4Game STATIC)
+target_sources(Dirt4Game PRIVATE
+    "Src/Game/DiRT 4/Dirt4Game.h"
+    "Src/Game/DiRT 4/Dirt4Game.cc"
+    "Src/Game/DiRT 4/Dirt4TelemetryDataCapturer.h"
+    "Src/Game/DiRT 4/Dirt4TelemetryDataCapturer.cc"
+    "Src/Game/DiRT 4/UdpPacket.h"
+    )
+set_target_properties(Dirt4Game PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_link_libraries(Dirt4Game PRIVATE
     Qt5::Core Qt5::Network)
 
 
