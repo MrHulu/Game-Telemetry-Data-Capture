@@ -20,5 +20,15 @@
             "sendPort": 21400,
             "sendIpAddress": "127.0.0.1"
         }
+    },
+    "DiRT 4": {
+        "installPath": "",
+        "processName": [ "dirt4.exe" ],
+        "UDP": {
+            "port": 20777,
+            "ipAddress": "127.0.0.1",
+            "sendPort": 21400,
+            "sendIpAddress": "127.0.0.1"
+        }
     }
 }
