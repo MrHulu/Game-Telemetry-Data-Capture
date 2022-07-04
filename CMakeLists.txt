@@ -44,7 +44,12 @@ target_sources(Game PRIVATE
     "Src/Game/TelemetryDataBuffer.h"
     "Src/Game/TelemetryDataBuffer.cc"
 
-    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Environment/documentsPath.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameRunMonitoringHelper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameRunMonitoringHelper.cc
+    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.h
+    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.cc
     )
 set_target_properties(Game PROPERTIES
     AUTOUIC ON

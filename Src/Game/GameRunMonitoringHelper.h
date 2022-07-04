@@ -13,7 +13,7 @@ public:
     GameRunMonitoringHelper(const QMap<QString, Game *> &games, QObject *parent = nullptr);
 
 signals:
-    void gameIsRunning(const Game* game);
+    void gameIsRunning(Game* game);
 
 private:
     void monitoring();
