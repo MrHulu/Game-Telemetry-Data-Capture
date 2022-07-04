@@ -15,6 +15,21 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /std:c++latest")
 find_package(Qt5 COMPONENTS Gui Core Network REQUIRED)
 
 
+add_library(DocumentsPath STATIC)
+target_sources(DocumentsPath PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Environment/documentsPath.cc)
+set_target_properties(DocumentsPath PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    #CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_include_directories(DocumentsPath PUBLIC
+    Qt5::Core )
+target_link_libraries(DocumentsPath PRIVATE
+    Qt5::Core)
+
 # -------   Game   -----------
 add_library(Game STATIC)
 target_sources(Game PRIVATE
@@ -28,6 +43,8 @@ target_sources(Game PRIVATE
     "Src/Game/CapturerWithUdp.cc"
     "Src/Game/TelemetryDataBuffer.h"
     "Src/Game/TelemetryDataBuffer.cc"
+
+    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Environment/documentsPath.cc
     )
 set_target_properties(Game PROPERTIES
     AUTOUIC ON
@@ -37,7 +54,7 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
-    Qt5::Core Qt5::Network
+    Qt5::Core Qt5::Network DocumentsPath
     ACGame ACCGame
     Dirt2Game Dirt4Game)
 
