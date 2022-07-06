@@ -1,10 +1,11 @@
-﻿cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14)
 
 find_package(Qt5 COMPONENTS Core Widgets Quick QuickControls2 REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
 
 set(SOFTWARE_NAME "Telemetry Data Capture Tool")
+set(SOFTWARE_ICON_PATH "Build/ok.ico")
 
 set(X_VERSION "0")
 set(Y_VERSION "0")
@@ -13,9 +14,12 @@ set(SOFTWARE_VERSION "${X_VERSION}.${Y_VERSION}.${Z_VERSION}")
 
 enable_testing()
 
+
+configure_file(Build/Telemetry-Capture-Tool.rc.cmakein Telemetry-Capture-Tool.rc @ONLY)
+
 add_executable(Game-Telemetry-Data-Capture)
 target_sources(Game-Telemetry-Data-Capture PRIVATE
-    #${CMAKE_CURRENT_BINARY_DIR}/Game-Telemetry-Data-Capture.rc
+    ${CMAKE_CURRENT_BINARY_DIR}/Telemetry-Capture-Tool.rc
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/resource.qrc
     )
