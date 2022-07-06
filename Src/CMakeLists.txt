@@ -1,11 +1,11 @@
-cmake_minimum_required(VERSION 3.14)
+﻿cmake_minimum_required(VERSION 3.14)
 
 find_package(Qt5 COMPONENTS Core Widgets Quick QuickControls2 REQUIRED)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8")
 
 set(SOFTWARE_NAME "Telemetry Data Capture Tool")
-set(SOFTWARE_ICON_PATH "Build/ok.ico")
+set(SOFTWARE_ICON_PATH "Build/LOGO.ico")
 
 set(X_VERSION "0")
 set(Y_VERSION "0")
