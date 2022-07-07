@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14)
 
 find_package(Qt5 COMPONENTS Core Widgets Quick QuickControls2 REQUIRED)
 
@@ -9,7 +9,7 @@ set(SOFTWARE_ICON_PATH "Build/LOGO.ico")
 
 set(X_VERSION "0")
 set(Y_VERSION "0")
-set(Z_VERSION "2")
+set(Z_VERSION "3")
 set(SOFTWARE_VERSION "${X_VERSION}.${Y_VERSION}.${Z_VERSION}")
 
 enable_testing()
