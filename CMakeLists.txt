@@ -15,19 +15,20 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /std:c++latest")
 find_package(Qt5 COMPONENTS Gui Core Network REQUIRED)
 
 
-add_library(DocumentsPath STATIC)
-target_sources(DocumentsPath PRIVATE
+# ----------  Infomation  ----------
+add_library(Infomation STATIC)
+target_sources(Infomation PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Environment/documentsPath.cc)
-set_target_properties(DocumentsPath PROPERTIES
+set_target_properties(Infomation PROPERTIES
     AUTOUIC ON
     AUTOMOC ON
     AUTORCC ON
     #CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
-target_include_directories(DocumentsPath PUBLIC
+target_include_directories(Infomation PUBLIC
     Qt5::Core )
-target_link_libraries(DocumentsPath PRIVATE
+target_link_libraries(Infomation PRIVATE
     Qt5::Core)
 
 # -------   Game   -----------
@@ -59,7 +60,7 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
-    Qt5::Core Qt5::Network DocumentsPath
+    Qt5::Core Qt5::Network Infomation
     ACGame ACCGame
     Dirt2Game Dirt4Game)
 
