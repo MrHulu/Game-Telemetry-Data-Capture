@@ -13,7 +13,7 @@ void GameWithUdp::updateReadPort(int newReadPort)
     if(m_readPort == newReadPort)
         return;
     if(isRunnig()) {
-        emit errorOccurred(QString("Game is Running! Can`t Modify Address Or Port!"));
+        emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
     m_readPort = newReadPort;
@@ -32,7 +32,7 @@ void GameWithUdp::updateWritePort(int newWritePort)
     if(m_writePort == newWritePort)
         return;
     if(isRunnig()) {
-        emit errorOccurred(QString("Game is Running! Can`t Modify Address Or Port!"));
+        emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
     m_writePort = newWritePort;
@@ -51,7 +51,7 @@ void GameWithUdp::updateReadAddress(QString newReadAddress)
     if(m_readAddress == newReadAddress)
         return;
     if(isRunnig()) {
-        emit errorOccurred(QString("Game is Running! Can`t Modify Address Or Port!"));
+        emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
     m_readAddress = newReadAddress;
@@ -70,7 +70,7 @@ void GameWithUdp::updateWriteAddress(QString newWriteAddress)
     if(m_writeAddress == newWriteAddress)
         return;
     if(isRunnig()) {
-        emit errorOccurred(QString("Game is Running! Can`t Modify Address Or Port!"));
+        emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
     m_writeAddress = newWriteAddress;
