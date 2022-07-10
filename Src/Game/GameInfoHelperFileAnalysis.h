@@ -4,25 +4,33 @@
 
 #include <QObject>
 #include <QDateTime>
+#include <QJsonObject>
 
-class GameInfoHelper::GameInfoFileAnalysis : public QObject
+class JsonFileAnalysis;
+
+class GameInfoHelper::GameInfoFileReadAndWrite : public QObject
 {
     Q_OBJECT
-    static constexpr auto GameInfoFileName = "GameInfo.json";
 public:
-    GameInfoFileAnalysis(GameInfoHelper& helper);
+    GameInfoFileReadAndWrite(const QString filePath, GameInfoHelper& helper);
 
-    void analyze();
+    void updateGameInfo();
+    void readGameInfoFile();
+    void creatGameInfoFile();
+    void writeGameInstallPathInfo(const QString& gameName, const QString& gameInstallPath);
 
 private:
-    QString gameInfoFilePath();
-
+    QString getGameInfoFilePath();
+    QJsonObject getGameInfoObjcet(const QString& gameName);
+    QSet<QString> getProcessNamesFromJsonArray(QJsonObject obj);
+    void write(QByteArray fileData);
 
 private:
     GameInfoHelper& gameInfoHelper;
 
-    QByteArray      m_fileData;
+    JsonFileAnalysis*   m_jsonAnalysis = nullptr;
     QString         m_fileVersion;
+    QJsonObject     m_fileJsonObjcet;
     QDateTime       m_fileChangeTime;
 };
 

@@ -14,7 +14,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /utf-8 /std:c++latest")
 
 find_package(Qt5 COMPONENTS Gui Core Network REQUIRED)
 
-# ----------  Infomation  ----------
+# ----------  Utils  ----------
 add_library(Utils STATIC)
 target_sources(Utils PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Utils/JsonFileAnalysis.h
@@ -69,8 +69,10 @@ target_sources(Game PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameRunMonitoringHelper.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameRunMonitoringHelper.cc
-    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.h
-    #${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameInfoHelper.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameInfoHelper.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameInfoHelperFileAnalysis.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameInfoHelperFileAnalysis.cc
     )
 set_target_properties(Game PROPERTIES
     AUTOUIC ON
@@ -80,7 +82,7 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_link_libraries(Game PRIVATE
-    Qt5::Core Qt5::Network Infomation
+    Qt5::Core Qt5::Network Infomation Utils
     ACGame ACCGame
     Dirt2Game Dirt4Game)
 
