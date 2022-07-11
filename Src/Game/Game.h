@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <QSet>
 #include <QObject>
@@ -25,8 +25,8 @@ protected:
     //游戏是否运行
     Q_PROPERTY(bool isRunning READ isRunning WRITE setIsRunning NOTIFY isRunningChanged)
 public:
-    bool isRunnig() const;
-    void setIsRunnig(bool newIsRunning);
+    bool isRunning() const;
+    void setIsRunning(bool newIsRunning);
 signals:
     void isRunningChanged();
 protected:
@@ -52,8 +52,6 @@ protected:
 public:
     QSet<QString>   processNames() const;
     void setProcessNames(const QSet<QString>& names);
-    bool isRunning() const;
-    void setIsRunning(bool newIsRunning);
 protected:
     QSet<QString>   m_processName;
 
@@ -72,7 +70,7 @@ protected:
 
 inline QString Game::name() const { return m_name; }
 
-inline bool Game::isRunnig() const { return m_isRunning; }
+inline bool Game::isRunning() const { return m_isRunning; }
 
 inline QSet<QString> Game::processNames() const { return m_processName; }
 

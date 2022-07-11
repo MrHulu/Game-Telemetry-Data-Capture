@@ -11,7 +11,7 @@ Game::~Game()
 
 }
 
-void Game::setIsRunnig(bool newIsRunning)
+void Game::setIsRunning(bool newIsRunning)
 {
     if(m_isRunning == newIsRunning)
         return;

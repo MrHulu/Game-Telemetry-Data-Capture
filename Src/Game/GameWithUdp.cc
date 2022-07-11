@@ -1,4 +1,4 @@
-﻿#include "Game/GameWithUdp.h"
+#include "Game/GameWithUdp.h"
 #include <QThread>
 
 void GameWithUdp::setReadPort(int newReadPort)
@@ -12,7 +12,7 @@ void GameWithUdp::updateReadPort(int newReadPort)
 {
     if(m_readPort == newReadPort)
         return;
-    if(isRunnig()) {
+    if(isRunning()) {
         emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
@@ -31,7 +31,7 @@ void GameWithUdp::updateWritePort(int newWritePort)
 {
     if(m_writePort == newWritePort)
         return;
-    if(isRunnig()) {
+    if(isRunning()) {
         emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
@@ -50,7 +50,7 @@ void GameWithUdp::updateReadAddress(QString newReadAddress)
 {
     if(m_readAddress == newReadAddress)
         return;
-    if(isRunnig()) {
+    if(isRunning()) {
         emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
@@ -69,7 +69,7 @@ void GameWithUdp::updateWriteAddress(QString newWriteAddress)
 {
     if(m_writeAddress == newWriteAddress)
         return;
-    if(isRunnig()) {
+    if(isRunning()) {
         emit errorOccurred(QString("Game is Running! Can`t Update Address Or Port!"));
         return;
     }
