@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+﻿cmake_minimum_required(VERSION 3.14)
 
 project(Game-Telemetry-Data-Capture)
 
@@ -19,12 +19,13 @@ find_package(Qt5 COMPONENTS Gui Core Network REQUIRED)
 add_library(Utils STATIC)
 target_sources(Utils PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Utils/JsonFileAnalysis.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Utils/JsonFileAnalysis.cc)
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Utils/JsonFileAnalysis.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Utils/VersionCompare.cc)
 set_target_properties(Utils PROPERTIES
     AUTOUIC ON
     AUTOMOC ON
     AUTORCC ON
-    #CXX_STANDARD 20
+    CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_include_directories(Utils PUBLIC
