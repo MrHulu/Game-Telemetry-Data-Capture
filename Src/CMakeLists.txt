@@ -17,6 +17,24 @@ enable_testing()
 
 configure_file(Build/Telemetry-Capture-Tool.rc.cmakein Telemetry-Capture-Tool.rc @ONLY)
 
+# ----------  AppEnvironment  ----------
+add_library(AppEnvironment STATIC)
+target_sources(AppEnvironment PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Environment/registerQmlType.cc)
+set_target_properties(AppEnvironment PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    #CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_include_directories(AppEnvironment PUBLIC
+    Qt5::Core Qt5::Quick ${GUI_SRC_PATH} )
+target_link_libraries(AppEnvironment PUBLIC
+    Qt5::Core Qt5::Quick
+    Game Infomation)
+
+
 add_executable(Game-Telemetry-Data-Capture)
 target_sources(Game-Telemetry-Data-Capture PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Telemetry-Capture-Tool.rc
@@ -33,10 +51,11 @@ set_target_properties(Game-Telemetry-Data-Capture PROPERTIES
     LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup"
     OUTPUT_NAME "${SOFTWARE_NAME}")
 target_include_directories(Game-Telemetry-Data-Capture PUBLIC
-    Qt5::Core Qt5::Quick Qt5::QuickControls2 #${GUI_SRC_PATH}
+    Qt5::Core Qt5::Quick Qt5::QuickControls2 ${GUI_SRC_PATH}
 	)
 target_link_libraries(Game-Telemetry-Data-Capture PRIVATE
-    Qt5::Core Qt5::Quick Qt5::QuickControls2 Game
+    Qt5::Core Qt5::Quick Qt5::QuickControls2
+    Game AppEnvironment
     )
 #add_custom_command(TARGET Game-Telemetry-Data-Capture
 #    DEPENDS ${QM_FILES}

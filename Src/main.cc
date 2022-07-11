@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 
 namespace Environment {
-//extern void registerQmlType(QQmlApplicationEngine &engine);
+extern void registerQmlType(QQmlApplicationEngine &engine);
 }
 
 int main(int argc, char *argv[])
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    //Environment::registerQmlType(engine);
+    Environment::registerQmlType(engine);
 
     const QUrl url(QStringLiteral("qrc:/Gui/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

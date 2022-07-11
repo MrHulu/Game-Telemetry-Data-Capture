@@ -1,10 +1,11 @@
-﻿cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14)
 
 project(Game-Telemetry-Data-Capture)
 
 include_directories(Src)
 set(ROOT_SRC_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 set(ROOT_BIN_PATH ${CMAKE_CURRENT_BINARY_DIR})
+set(GUI_SRC_PATH ${CMAKE_CURRENT_LIST_DIR}/src)
 set(3RD_SRC_PATH ${CMAKE_CURRENT_LIST_DIR}/3rdparty)
 set(3RD_INSTALL_PATH ${CMAKE_CURRENT_BINARY_DIR}/3rdparty)
 
@@ -81,6 +82,8 @@ set_target_properties(Game PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
+target_include_directories(Game PUBLIC
+    Qt5::Core Qt5::Network ${GUI_SRC_PATH})
 target_link_libraries(Game PRIVATE
     Qt5::Core Qt5::Network Infomation Utils
     ACGame ACCGame
@@ -103,6 +106,8 @@ set_target_properties(ACGame PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
+target_include_directories(ACGame PUBLIC
+    Qt5::Core ${GUI_SRC_PATH})
 target_link_libraries(ACGame PRIVATE
     Qt5::Core)
 
@@ -123,6 +128,8 @@ set_target_properties(ACCGame PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
+target_include_directories(ACCGame PUBLIC
+    Qt5::Core ${GUI_SRC_PATH})
 target_link_libraries(ACCGame PRIVATE
     Qt5::Core)
 
@@ -143,6 +150,8 @@ set_target_properties(Dirt2Game PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
+target_include_directories(Dirt2Game PUBLIC
+    Qt5::Core ${GUI_SRC_PATH})
 target_link_libraries(Dirt2Game PRIVATE
     Qt5::Core Qt5::Network)
 
@@ -163,6 +172,8 @@ set_target_properties(Dirt4Game PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
+target_include_directories(Dirt4Game PUBLIC
+    Qt5::Core ${GUI_SRC_PATH})
 target_link_libraries(Dirt4Game PRIVATE
     Qt5::Core Qt5::Network)
 
