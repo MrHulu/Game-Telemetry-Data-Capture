@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>Gui/main.qml</file>
+        <file>Information/GameInfo.json</file>
     </qresource>
 </RCC>
