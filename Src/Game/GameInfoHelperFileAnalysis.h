@@ -19,6 +19,9 @@ public:
     void creatGameInfoFile();
     void writeGameInstallPathInfo(const QString& gameName, const QString& gameInstallPath);
 
+    QString fileVersion() const;
+    QDateTime fileChangeTime();
+
 private:
     QString getGameInfoFilePath();
     QJsonObject getGameInfoObjcet(const QString& gameName);
@@ -33,4 +36,8 @@ private:
     QJsonObject     m_fileJsonObjcet;
     QDateTime       m_fileChangeTime;
 };
+
+inline QString GameInfoHelper::GameInfoFileReadAndWrite::fileVersion() const { return m_fileVersion; }
+
+inline QDateTime GameInfoHelper::GameInfoFileReadAndWrite::fileChangeTime() { return m_fileChangeTime; }
 
