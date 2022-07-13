@@ -7,6 +7,7 @@
 
 class Game;
 class GameRunMonitoringHelper;
+class GameInfoHelper;
 
 class GameManager : public QObject
 {
@@ -32,6 +33,7 @@ private slots:
 
 private:
     GameRunMonitoringHelper*    m_gameRunMonitoringHelper = nullptr;
+    GameInfoHelper*             m_gameInfoHelper = nullptr;
     Game *m_runningGame = nullptr;
     QMap<QString, Game *> m_supportGames;
 };

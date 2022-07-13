@@ -1,5 +1,6 @@
 ﻿#include "Game/GameManager.h"
 #include "Game/GameRunMonitoringHelper.h"
+#include "Game/GameInfoHelper.h"
 #include "Game/Assetto Corsa/ACGame.h"
 #include "Game/Assetto Corsa Competizione/ACCGame.h"
 #include "Game/DiRT Rally 2.0/DirtRally2Game.h"
@@ -21,6 +22,10 @@ GameManager::GameManager(QObject *parent) : QObject(parent)
     insertGame(new ACCGame(this));
     insertGame(new DirtRally2Game(this));
     insertGame(new Dirt4Game(this));
+
+    // 注意： 必须先给Game初始化信息
+    m_gameInfoHelper = new GameInfoHelper(m_supportGames, this);
+    m_gameInfoHelper->updateGameInfo();
 
     m_gameRunMonitoringHelper = new GameRunMonitoringHelper(m_supportGames, this);
     connect(m_gameRunMonitoringHelper, &GameRunMonitoringHelper::gameIsRunning, this, &GameManager::onGameIsRunning);
