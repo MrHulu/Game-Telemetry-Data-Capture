@@ -32,7 +32,7 @@ QString localAppDataPath() { return getKnownFolderPath(FOLDERID_LocalAppData); }
 
 QString applicationInfoPath()
 {
-    QDir dir(QString("%1/%2/%3").arg(documentsPath().arg(DirName).arg(AppInfoDirName)));
+    QDir dir(QString("%1/%2/%3").arg(documentsPath(),DirName, AppInfoDirName));
     if(!dir.exists())
         dir.mkpath(dir.path());
     return dir.path();
