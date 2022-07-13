@@ -17,6 +17,8 @@ GameInfoHelper::GameInfoFileReadAndWrite::GameInfoFileReadAndWrite(const QString
         m_jsonAnalysis{new JsonFileAnalysis(filePath, this)}
 {
     m_fileJsonObjcet = m_jsonAnalysis->toJsonObjcet();
+    m_fileVersion = m_fileJsonObjcet.value("version").toString();
+    m_fileChangeTime = QDateTime::fromString(m_fileJsonObjcet.value("changeTime").toString(), "yyyy-MM-dd hh:mm:ss");
 }
 
 void GameInfoHelper::GameInfoFileReadAndWrite::updateGameInfo()
@@ -30,7 +32,7 @@ void GameInfoHelper::GameInfoFileReadAndWrite::updateGameInfo()
         game->setInstallPath(installPath);
 
         auto processNames = getProcessNamesFromJsonArray(obj);
-        if(!processNames.empty()) game->setProcessNames(processNames);
+        if(!processNames.isEmpty()) game->setProcessNames(processNames);
 
         if(game->captureMethod() == Game::NetWorkUDP || game->captureMethod() == Game::UDPAndSM) {
             if(obj.contains("UDP")) {
@@ -64,6 +66,7 @@ void GameInfoHelper::GameInfoFileReadAndWrite::creatGameInfoFile()
 
 void GameInfoHelper::GameInfoFileReadAndWrite::writeGameInstallPathInfo(const QString &gameName, const QString &gameInstallPath)
 {
+    //m_fileJsonObjcet.contains()
     if(m_fileJsonObjcet.contains(gameName)) {
         auto obj = m_fileJsonObjcet[gameName].toObject();
         obj["installPath"] = gameInstallPath;
@@ -90,7 +93,7 @@ QSet<QString> GameInfoHelper::GameInfoFileReadAndWrite::getProcessNamesFromJsonA
     if(obj.contains("processName")) {
         auto arr = obj.value("processName").toArray();
         auto list = arr.toVariantList();
-        for(auto i = 0; list.size(); i++) {
+        for(auto i = 0; i<list.size(); i++) {
             auto name = list.at(i).toString();
             set.insert(name);
         }
