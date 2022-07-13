@@ -1,5 +1,6 @@
-#include <QGuiApplication>
+﻿#include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include "Game/GameManager.h"
 
 namespace Environment {
 extern void registerQmlType(QQmlApplicationEngine &engine);
@@ -8,6 +9,8 @@ extern void registerQmlType(QQmlApplicationEngine &engine);
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
+
+    GameManager::instance();
 
     QQmlApplicationEngine engine;
     Environment::registerQmlType(engine);
