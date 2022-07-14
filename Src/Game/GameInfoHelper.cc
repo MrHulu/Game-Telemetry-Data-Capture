@@ -19,11 +19,21 @@ GameInfoHelper::GameInfoHelper(const QMap<QString, Game*>& games, QObject *paren
     auto embeddedGameInfoFilePath = QString("://Information/GameInfo.json");
     m_localAppDataGameInfoFile = new GameInfoFileReadAndWrite(localGameInfoFilePath, *this);
     m_embeddedGameInfoFile = new GameInfoFileReadAndWrite(embeddedGameInfoFilePath, *this);
+
+    // 绑定Game的setGameInstallPath
+    for(auto iter = m_games.begin(); iter != m_games.end(); ++iter) {
+        auto game = iter.value();
+        connect(game, &Game::installPathChanged, this, [&, name = game->name(), path = game->installPath()] {
+            writeGameInstallPathInfo(name, path);
+        });
+    }
 }
 
 void GameInfoHelper::updateGameInfo()
 {
+    checkAndRefreshLocalGameInfoFile();
 
+    m_localAppDataGameInfoFile->updateGameInfo();
 }
 
 void GameInfoHelper::checkAndRefreshLocalGameInfoFile()
@@ -49,5 +59,5 @@ void GameInfoHelper::checkAndRefreshLocalGameInfoFile()
 
 void GameInfoHelper::writeGameInstallPathInfo(const QString &gameName, const QString &gameInstallPath)
 {
-
+    m_localAppDataGameInfoFile->writeGameInstallPathInfo(gameName, gameInstallPath);
 }
