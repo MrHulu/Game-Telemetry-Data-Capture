@@ -180,5 +180,5 @@ target_link_libraries(Dirt4Game PRIVATE
 
 
 add_subdirectory(Src)
-#add_subdirectory(Tests)
+add_subdirectory(Tests)
 #add_subdirectory(3rdparty)
