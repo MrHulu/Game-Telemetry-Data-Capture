@@ -19,9 +19,9 @@ set_target_properties(tst_GameInfoReadWrite PROPERTIES
     CXX_STANDARD_REQUIRED ON
     INCLUDE_CURRENT_DIR ON)
 target_include_directories(tst_GameInfoReadWrite PUBLIC
-    Qt5::Test ${GUI_SRC_PATH})
+    Qt5::Test Qt::Network  ${GUI_SRC_PATH})
 target_link_libraries(tst_GameInfoReadWrite PRIVATE
-    Qt5::Test Game )
+    Qt5::Test Qt::Network Game )
 
 add_test(NAME tst_GameInfoReadWrite
     COMMAND tst_GameInfoReadWrite)
