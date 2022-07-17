@@ -9,7 +9,8 @@ enable_testing()
 project(tst_GameInfoReadWrite LANGUAGES CXX)
 add_executable(tst_GameInfoReadWrite)
 target_sources(tst_GameInfoReadWrite PUBLIC
-    ${CMAKE_CURRENT_SOURCE_DIR}/tst_GameInfoReadWrite.cc)
+    ${CMAKE_CURRENT_SOURCE_DIR}/tst_GameInfoReadWrite.cc
+    ${GUI_SRC_PATH}/resource.qrc)
 set_target_properties(tst_GameInfoReadWrite PROPERTIES
     AUTOUIC ON
     AUTOMOC ON
@@ -21,7 +22,7 @@ set_target_properties(tst_GameInfoReadWrite PROPERTIES
 target_include_directories(tst_GameInfoReadWrite PUBLIC
     Qt5::Test Qt::Network  ${GUI_SRC_PATH})
 target_link_libraries(tst_GameInfoReadWrite PRIVATE
-    Qt5::Test Qt::Network Game )
+    Qt5::Test Qt::Network Game Infomation)
 
 add_test(NAME tst_GameInfoReadWrite
     COMMAND tst_GameInfoReadWrite)
