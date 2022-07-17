@@ -7,7 +7,7 @@
 
 namespace Environment {
 
-static QString DirName = "JokerProgmmer";
+static QString DirName = "HuluMan";
 static QString AppInfoDirName = "Racing Telemetry Tool";
 
 static QString getKnownFolderPath(REFKNOWNFOLDERID dir)
