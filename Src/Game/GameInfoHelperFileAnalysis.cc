@@ -57,6 +57,8 @@ void GameInfoHelper::GameInfoFileReadAndWrite::readGameInfoFile()
 {
     m_jsonAnalysis->analyze();
     m_fileJsonObjcet = m_jsonAnalysis->toJsonObjcet();
+    m_fileVersion = m_fileJsonObjcet.value("version").toString();
+    m_fileChangeTime = QDateTime::fromString(m_fileJsonObjcet.value("changeTime").toString(), "yyyy-MM-dd hh:mm:ss");
 }
 
 void GameInfoHelper::GameInfoFileReadAndWrite::creatGameInfoFile()
