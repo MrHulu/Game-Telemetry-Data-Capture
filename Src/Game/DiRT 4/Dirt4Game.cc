@@ -3,7 +3,8 @@
 void Dirt4Game::startCapturer()
 {
     m_GameCapturer = new Dirt4TelemetryDataCapturer;
-    m_GameCapturer->setUdpInfoInCapturer(20777);
+    m_GameCapturer->setCapturePort(readPort());
+    m_GameCapturer->setForwardPort(writePort());
     m_GameCapturer->start();
     connect(m_GameCapturer, &QThread::finished, m_GameCapturer, &QObject::deleteLater);
     connect(m_GameCapturer, &QThread::finished, this, [&]{ m_GameCapturer = nullptr; });
@@ -15,6 +16,8 @@ void Dirt4Game::stopCapturer()
         return;
     m_GameCapturer->setFlag(false);
 }
+
+
 
 
 Dirt4Game::Dirt4Game(QObject *parent) : GameWithUdp{parent}

@@ -4,7 +4,8 @@
 void DirtRally2Game::startCapturer()
 {
     m_GameCapturer = new DirtRally2TelemetryDataCapturer;
-    m_GameCapturer->setUdpInfoInCapturer(20777);
+    m_GameCapturer->setCapturePort(readPort());
+    m_GameCapturer->setForwardPort(writePort());
     m_GameCapturer->start();
     connect(m_GameCapturer, &QThread::finished, m_GameCapturer, &QObject::deleteLater);
     connect(m_GameCapturer, &QThread::finished, this, [&]{ m_GameCapturer = nullptr; });

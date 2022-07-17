@@ -15,18 +15,6 @@ CapturerWithUdp::~CapturerWithUdp()
     }
 }
 
-void CapturerWithUdp::setUdpInfoInCapturer(quint16 port, QString address)
-{
-    m_capturerPort = port;
-    m_capturerAddress.setAddress(address);
-}
-
-void CapturerWithUdp::setUdpInfoInForward(quint16 port, QString address)
-{
-    m_forwardPort = port;
-    m_forwardAddress.setAddress(address);
-}
-
 bool CapturerWithUdp::bind()
 {
     return m_socket->bind(m_capturerAddress, m_capturerPort);
