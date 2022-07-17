@@ -71,7 +71,7 @@ void GameInfoHelper::GameInfoFileReadAndWrite::writeGameInstallPathInfo(const QS
         auto obj = m_fileJsonObjcet[gameName].toObject();
         obj["installPath"] = gameInstallPath;
         m_fileJsonObjcet[gameName] = obj;
-        write(QJsonDocument::fromVariant(m_fileJsonObjcet).toJson());
+        write(QJsonDocument::fromVariant(m_fileJsonObjcet.toVariantMap()).toJson());
     }
 }
 
@@ -105,6 +105,7 @@ void GameInfoHelper::GameInfoFileReadAndWrite::write(QByteArray fileData)
 {
     auto path = QString("%1/%2").arg(Environment::applicationInfoPath(), gameInfoHelper.GameInfoJsonFileName);
 
+    //qDebug().noquote().nospace() << "write: "<<QString::fromUtf8(fileData);
     QFile file(path);
     if(file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
         file.write(fileData);

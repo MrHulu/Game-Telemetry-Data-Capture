@@ -15,7 +15,7 @@ public:
 signals:
     void readPortChanged();
 private:
-    int m_readPort;
+    int m_readPort = 21466;
 
     //UDP WritePort
     Q_PROPERTY(int writePort READ writePort WRITE setWritePort NOTIFY writePortChanged)
@@ -26,7 +26,7 @@ public:
 signals:
     void writePortChanged();
 private:
-    int m_writePort;
+    int m_writePort = 21400;
 
     //UDP ReadAddress
     Q_PROPERTY(QString readAddress READ readAddress WRITE setReadAddress NOTIFY readAddressChanged)
@@ -49,7 +49,6 @@ signals:
     void writeAddressChanged();
 private:
     QString m_writeAddress;
-
 
 public:
     explicit GameWithUdp(QObject *parent = nullptr);
