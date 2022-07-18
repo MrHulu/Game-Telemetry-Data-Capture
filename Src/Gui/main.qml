@@ -16,4 +16,5 @@ ApplicationWindow {
             GradientStop { position: 1.0; color: "#FFF2F6FA" }
         }
     }
+    GameItem {}
 }
