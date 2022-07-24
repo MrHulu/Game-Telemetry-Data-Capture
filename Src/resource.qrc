@@ -3,5 +3,23 @@
         <file>Gui/main.qml</file>
         <file>Information/GameInfo.json</file>
         <file>Gui/GameItem.qml</file>
+        <file>Gui/GameList.qml</file>
+        <file>Gui/images/Assetto Corsa Com.jpg</file>
+        <file>Gui/images/Assetto Corsa Comp.jpg</file>
+        <file>Gui/images/Assetto Corsa Competizione.jpg</file>
+        <file>Gui/images/Assetto Corsa.jpg</file>
+        <file>Gui/images/DiRT 3.jpg</file>
+        <file>Gui/images/DiRT 4.jpg</file>
+        <file>Gui/images/DiRT 5.jpg</file>
+        <file>Gui/images/DiRT Rally 2.0.jpg</file>
+        <file>Gui/images/DiRT Rally.jpg</file>
+        <file>Gui/images/F1 2018.jpg</file>
+        <file>Gui/images/F1 2019.jpg</file>
+        <file>Gui/images/F1 2020.jpg</file>
+        <file>Gui/images/F1 2021.jpg</file>
+        <file>Gui/images/F1 2022.jpg</file>
+        <file>Gui/images/iRacing.jpg</file>
+        <file>Gui/images/LOGO.png</file>
+        <file>Gui/qtquickcontrols2.conf</file>
     </qresource>
 </RCC>
