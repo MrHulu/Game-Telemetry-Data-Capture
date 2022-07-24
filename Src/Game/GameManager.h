@@ -13,7 +13,7 @@ class GameManager : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Game* runningGame READ runningGame WRITE setRunningGame NOTIFY runningGameChanged)
-    Q_PROPERTY(QMap<QString,Game*> supportGames READ supportGames CONSTANT)
+    Q_PROPERTY(QVariantList supportGames READ supportGames CONSTANT)
 
 public:
     explicit GameManager(QObject *parent = nullptr);
@@ -21,7 +21,7 @@ public:
 
     Game *runningGame() const;
     void setRunningGame(Game *newRunningGame);
-    const QMap<QString, Game *> &supportGames() const;
+    QVariantList supportGames() const;
     Q_INVOKABLE Game* findGame(const QString& name) const;
 
 signals:
@@ -39,4 +39,3 @@ private:
 };
 
 inline Game *GameManager::runningGame() const { return m_runningGame; }
-inline const QMap<QString, Game *> &GameManager::supportGames() const { return m_supportGames; }

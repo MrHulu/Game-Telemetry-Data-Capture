@@ -64,6 +64,15 @@ Game *GameManager::findGame(const QString &name) const
     return nullptr;
 }
 
+QVariantList GameManager::supportGames() const
+{
+    QVariantList list;
+   for(auto iter = m_supportGames.begin(); iter != m_supportGames.end(); iter++) {
+       list.append(iter.key());
+   }
+   return list;
+}
+
 void GameManager::onGameIsRunning(Game *game)
 {
     if(game && m_runningGame == nullptr)
@@ -82,5 +91,3 @@ void GameManager::controlGameCapturer()
         m_runningGame->stopCapturer();
     }
 }
-
-
