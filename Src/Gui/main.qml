@@ -13,11 +13,29 @@ ApplicationWindow {
     Material.theme: Material.System
     Material.accent: Material.Teal
 
-    background: Rectangle {
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "#D1FFFFFF" }
-            GradientStop { position: 1.0; color: "#FFF2F6FA" }
-        }
+//    background: Rectangle {
+//        gradient: Gradient {
+//            GradientStop { position: 0.0; color: "#D1FFFFFF" }
+//            GradientStop { position: 1.0; color: "#FFF2F6FA" }
+//        }
+//    }
+
+    Button {
+        text:  "text"
+        anchors.centerIn: parent
     }
-    GameItem {}
+    Item {
+        id: view
+        anchors.left: root.contentItem.left
+        anchors.top: root.contentItem.top
+        anchors.bottom: root.contentItem.bottom
+        anchors.right: root.contentItem.right
+        anchors.leftMargin: 30
+        anchors.rightMargin: 30
+
+        GameList {
+            height: view.height
+            anchors.right: view.right
+        }
+    }// view
 }
