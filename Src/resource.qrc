@@ -20,6 +20,5 @@
         <file>Gui/images/F1 2022.jpg</file>
         <file>Gui/images/iRacing.jpg</file>
         <file>Gui/images/LOGO.png</file>
-        <file>Gui/qtquickcontrols2.conf</file>
     </qresource>
 </RCC>

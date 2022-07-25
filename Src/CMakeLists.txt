@@ -40,6 +40,7 @@ target_sources(Game-Telemetry-Data-Capture PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Telemetry-Capture-Tool.rc
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/resource.qrc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Gui/gui.qrc
     )
 set_target_properties(Game-Telemetry-Data-Capture PROPERTIES
     AUTOUIC ON
