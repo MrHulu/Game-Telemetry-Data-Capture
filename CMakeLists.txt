@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.14)
 
 project(Game-Telemetry-Data-Capture)
 
@@ -52,6 +52,22 @@ target_link_libraries(Infomation PRIVATE
     Qt5::Core)
 
 
+# ----------  Data  ----------
+add_library(Data STATIC)
+target_sources(Data PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataBuffer.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataBuffer.cc)
+set_target_properties(Data PROPERTIES
+    AUTOUIC ON
+    AUTOMOC ON
+    AUTORCC ON
+    #CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    INCLUDE_CURRENT_DIR ON)
+target_include_directories(Data PUBLIC
+    Qt5::Core )
+target_link_libraries(Data PRIVATE
+    Qt5::Core)
 
 # -------   Game   -----------
 add_library(Game STATIC)
@@ -64,8 +80,6 @@ target_sources(Game PRIVATE
     "Src/Game/Capturer.cc"
     "Src/Game/CapturerWithUdp.h"
     "Src/Game/CapturerWithUdp.cc"
-    "Src/Game/TelemetryDataBuffer.h"
-    "Src/Game/TelemetryDataBuffer.cc"
 
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.h
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Game/GameManager.cc
@@ -86,7 +100,8 @@ set_target_properties(Game PROPERTIES
 target_include_directories(Game PUBLIC
     Qt5::Core Qt5::Network ${GUI_SRC_PATH})
 target_link_libraries(Game PRIVATE
-    Qt5::Core Qt5::Network Infomation Utils
+    Qt5::Core Qt5::Network
+    Infomation Utils Data
     ACGame ACCGame
     Dirt2Game Dirt4Game)
 

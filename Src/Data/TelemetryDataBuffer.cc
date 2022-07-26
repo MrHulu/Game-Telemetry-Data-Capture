@@ -1,4 +1,4 @@
-#include "Game/TelemetryDataBuffer.h"
+#include "Data/TelemetryDataBuffer.h"
 
 TelemetryDataBuffer TelemetryDataBuffer::_instance;
 

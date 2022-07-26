@@ -1,10 +1,10 @@
-﻿#include <QtTest>
+#include <QtTest>
 #include <QSignalSpy>
 
 // add necessary includes here
 #include "Game/Assetto Corsa/ACGame.h"
 #include "Game/GameRunMonitoringHelper.h"
-#include "Game/TelemetryDataBuffer.h"
+#include "Data/TelemetryDataBuffer.h"
 
 #include <memory>
 

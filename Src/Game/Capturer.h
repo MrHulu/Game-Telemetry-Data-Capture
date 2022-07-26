@@ -1,6 +1,6 @@
-﻿#pragma once
+#pragma once
 
-#include "Game/TelemetryDataBuffer.h"
+#include "Data/TelemetryDataBuffer.h"
 
 #include <QObject>
 #include <QMap>
