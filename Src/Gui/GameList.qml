@@ -47,6 +47,7 @@ ScrollView{
                    listModel.append({"gameName": games[i] })
                }
            }
+           currentIndex: 0;
            model: ListModel {
                id:listModel
            }// listModel
@@ -56,7 +57,7 @@ ScrollView{
            }// GameItem
 
            height: count * 152 -12
-           width: currentItem.width
+           width: currentItem ? currentItem.width : 300
         }
     }//Flickable
 }
