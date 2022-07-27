@@ -1,9 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>Gui/main.qml</file>
         <file>Information/GameInfo.json</file>
-        <file>Gui/GameItem.qml</file>
-        <file>Gui/GameList.qml</file>
         <file>Gui/images/Assetto Corsa Com.jpg</file>
         <file>Gui/images/Assetto Corsa Comp.jpg</file>
         <file>Gui/images/Assetto Corsa Competizione.jpg</file>

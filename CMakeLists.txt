@@ -56,7 +56,10 @@ target_link_libraries(Infomation PRIVATE
 add_library(Data STATIC)
 target_sources(Data PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataBuffer.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataBuffer.cc)
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataBuffer.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataTableModel.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/Src/Data/TelemetryDataTableModel.cc
+)
 set_target_properties(Data PROPERTIES
     AUTOUIC ON
     AUTOMOC ON

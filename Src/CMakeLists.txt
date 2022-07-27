@@ -32,15 +32,15 @@ target_include_directories(AppEnvironment PUBLIC
     Qt5::Core Qt5::Quick ${GUI_SRC_PATH} )
 target_link_libraries(AppEnvironment PUBLIC
     Qt5::Core Qt5::Quick
-    Game Infomation)
+    Game Infomation Data)
 
 
 add_executable(Game-Telemetry-Data-Capture)
 target_sources(Game-Telemetry-Data-Capture PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR}/Telemetry-Capture-Tool.rc
     ${CMAKE_CURRENT_SOURCE_DIR}/main.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/resource.qrc
     ${CMAKE_CURRENT_SOURCE_DIR}/Gui/gui.qrc
+    ${CMAKE_CURRENT_SOURCE_DIR}/resource.qrc
     )
 set_target_properties(Game-Telemetry-Data-Capture PROPERTIES
     AUTOUIC ON

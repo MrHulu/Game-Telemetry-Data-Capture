@@ -28,7 +28,7 @@ Control {
         source: Image {
             width: control.width
             height: control.height
-            source: "images/%1.jpg".arg(gameName)
+            source: "Gui/images/%1.jpg".arg(gameName)
             fillMode: Image.Stretch
             smooth: true
             mipmap: true

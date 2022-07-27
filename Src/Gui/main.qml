@@ -10,30 +10,28 @@ ApplicationWindow {
     height: 820
     visible: true
 
-//    background: Rectangle {
-//        gradient: Gradient {
-//            GradientStop { position: 0.0; color: "#D1FFFFFF" }
-//            GradientStop { position: 1.0; color: "#FFF2F6FA" }
-//        }
-//    }
-
-    Button {
-        text:  "text"
-        highlighted: true
-        anchors.centerIn: parent
-    }
     Item {
-        id: view
+        id: bgItem
         anchors.left: root.contentItem.left
         anchors.top: root.contentItem.top
         anchors.bottom: root.contentItem.bottom
         anchors.right: root.contentItem.right
-        anchors.leftMargin: 30
+
+        TelemetryDataView {
+            id: view
+            anchors.left: bgItem.left
+            anchors.top: bgItem.top
+            anchors.bottom: bgItem.bottom
+            anchors.right: gameList.left
+            anchors.leftMargin: 30
+            anchors.rightMargin: 30
+        }
 
         GameList {
-            height: view.height
-            anchors.right: view.right
+            id: gameList
+            height: bgItem.height
+            anchors.right: bgItem.right
 
         }
-    }// view
+    }// bgItem
 }
