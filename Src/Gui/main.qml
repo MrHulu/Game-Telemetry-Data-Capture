@@ -2,6 +2,7 @@ import QtQuick 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import QtQuick.Controls.Material 2.15
 
 ApplicationWindow {
     id: root
@@ -28,11 +29,11 @@ ApplicationWindow {
         anchors.bottom: root.contentItem.bottom
         anchors.right: root.contentItem.right
         anchors.leftMargin: 30
-        anchors.rightMargin: 30
 
         GameList {
             height: view.height
             anchors.right: view.right
+
         }
     }// view
 }

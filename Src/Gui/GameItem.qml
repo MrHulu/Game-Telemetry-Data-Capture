@@ -53,14 +53,16 @@ Control {
         visible: control.hovered
         anchors.centerIn: control
         Button {
-            Layout.preferredHeight: 24
+            highlighted: true
+            Layout.preferredHeight: 44
             Layout.preferredWidth: implicitWidth
             id: gameStartButton
             text: qsTranslate("", "启动")
         }
         Button {
+            highlighted: true
             id: settingButton
-            Layout.preferredHeight: 24
+            Layout.preferredHeight: 44
             Layout.preferredWidth: implicitWidth
             text: qsTranslate("", "设置")
         }
