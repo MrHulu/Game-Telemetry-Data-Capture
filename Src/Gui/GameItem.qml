@@ -19,8 +19,16 @@ Control {
     readonly property GameWithUdp gameUdp: game &&  isUdpGame ? game : null
     readonly property string gameName: game ? game.name : null
 
-    ToolTip {
+    signal settingClicked(Game game)
+    signal setInstallPath(Game game)
 
+    ToolTip {
+        id: tooltip
+        padding: 5
+        timeout: 50
+        visible: false
+        readonly property string installPath: game ? game.installPath : null
+        text: installPath ? qsTranslate("", "游戏安装路径为: %1").arg(installPath) : qsTranslate("","请设置游戏安装路径")
     }
 
     OpacityMask {
@@ -58,13 +66,24 @@ Control {
             Layout.preferredWidth: implicitWidth
             id: gameStartButton
             text: qsTranslate("", "启动")
-        }
+            onHoveredChanged: {
+                if(hovered) tooltip.show()
+                else tooltip.hide()
+            }
+            onClicked: {
+                let path = game.installPath
+                if(path) Qt.openUrlExternally(Qt.resolvedUrl(path))
+                else setInstallPath(control.game)
+            }
+        }// Button
+
         Button {
             highlighted: true
             id: settingButton
             Layout.preferredHeight: 44
             Layout.preferredWidth: implicitWidth
             text: qsTranslate("", "设置")
+            onClicked: settingClicked(control.game)
         }
     }// ColumnLayout
 
