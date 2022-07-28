@@ -9,7 +9,7 @@ TableView {
     //implicitWidth: 400
     visible: true
     columnSpacing: 0
-    rowSpacing: 0
+    rowSpacing: 1
     clip: true
 
     model: TelemetryDataTableModel { id: telemetryDataTableModel }
@@ -17,12 +17,14 @@ TableView {
     delegate: Control {
         id: delegateControl
         hoverEnabled: true
-        width: label.implicitWidth
-        height: label.implicitHeight === 0 ?  30 : label.implicitHeight
+        width: view.width / columns - 2 //TODO: 暂时不知道减去多少
+        height: 42
         Rectangle {
             anchors.fill: parent
-            border.width: 1
-            border.color: Material.accent
+            color: {
+                if(columns % 2) return "#B0BEC5"
+                else return "#EEEEEE"
+            }
         }
         Label {
             id: label
