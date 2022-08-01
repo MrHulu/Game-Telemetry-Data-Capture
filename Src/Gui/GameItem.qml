@@ -24,8 +24,6 @@ Control {
 
     ToolTip {
         id: tooltip
-        padding: 5
-        timeout: 50
         visible: false
         readonly property string installPath: game ? game.installPath : null
         text: installPath ? qsTranslate("", "游戏安装路径为: %1").arg(installPath) : qsTranslate("","请设置游戏安装路径")
@@ -67,8 +65,9 @@ Control {
             id: gameStartButton
             text: qsTranslate("", "启动")
             onHoveredChanged: {
-                if(hovered) tooltip.show()
-                else tooltip.hide()
+                tooltip.parent = this
+                tooltip.visible = hovered
+                tooltip.y = -tooltip.height - 5
             }
             onClicked: {
                 let path = game.installPath
