@@ -44,7 +44,8 @@ ScrollView{
                Connections {
                    target: gameItem
                    function onSettingClicked(game) {
-
+                       settingPopup.game = game
+                       settingPopup.open()
                    }
                    function onSetInstallPath(game) {
                        fileDialog.open()
@@ -70,4 +71,5 @@ ScrollView{
             }
         }
     }// fileDialog
+    GameSettingPopup { id: settingPopup }
 }
