@@ -1,6 +1,8 @@
 #include "Data/TelemetryDataTableModel.h"
 #include "Data/TelemetryDataBuffer.h"
 
+#include <QCoreApplication>
+
 TelemetryDataTableModel::TelemetryDataTableModel(QObject *parent)
     : QAbstractTableModel{parent}
 {
@@ -21,7 +23,16 @@ TelemetryDataTableModel::TelemetryDataTableModel(QObject *parent)
 //    connect(model,&MyTableModel::modelReset,this,[=]{
 //            //不用担心无效的index，接口内部会处理
 //            table->setCurrentIndex(selectedIndex);
-//        },Qt::DirectConnection);
+    //        },Qt::DirectConnection);
+}
+
+QVariant TelemetryDataTableModel::headerData(int section, Qt::Orientation orientation, int role) const
+{
+    if(orientation == Qt::Horizontal && role == Qt::DisplayRole) {
+        if(section == 0) return QCoreApplication::translate("", "名称");
+        else return QCoreApplication::translate("", "数据值");
+    }
+    return QVariant();
 }
 
 QVariant TelemetryDataTableModel::data(const QModelIndex &index, int role) const
