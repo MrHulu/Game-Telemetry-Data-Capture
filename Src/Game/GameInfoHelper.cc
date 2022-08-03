@@ -1,4 +1,4 @@
-﻿#include "Game/GameInfoHelper.h"
+#include "Game/GameInfoHelper.h"
 #include "Game/GameInfoHelperFileAnalysis.h"
 #include "Game/Game.h"
 
@@ -23,8 +23,8 @@ GameInfoHelper::GameInfoHelper(const QMap<QString, Game*>& games, QObject *paren
     // 绑定Game的setGameInstallPath
     for(auto iter = m_games.begin(); iter != m_games.end(); ++iter) {
         auto game = iter.value();
-        connect(game, &Game::installPathChanged, this, [&, name = game->name(), path = game->installPath()] {
-            writeGameInstallPathInfo(name, path);
+        connect(game, &Game::installPathChanged, this, [game, this] {
+            writeGameInstallPathInfo(game->name(), game->installPath());
         });
     }
 }

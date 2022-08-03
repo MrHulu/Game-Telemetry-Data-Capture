@@ -26,12 +26,6 @@ GameManager::GameManager(QObject *parent) : QObject(parent)
     // 注意： 必须先给Game初始化信息
     m_gameInfoHelper = new GameInfoHelper(m_supportGames, this);
     m_gameInfoHelper->updateGameInfo();
-    for(auto iter = m_supportGames.begin(); iter != m_supportGames.end(); iter++) {
-        auto game = iter.value();
-        connect(game, &Game::installPathChanged, this, [game, this] {
-            m_gameInfoHelper->writeGameInstallPathInfo(game->name(), game->installPath());
-        });
-    }
 
     m_gameRunMonitoringHelper = new GameRunMonitoringHelper(m_supportGames, this);
     connect(m_gameRunMonitoringHelper, &GameRunMonitoringHelper::gameIsRunning, this, &GameManager::onGameIsRunning);
