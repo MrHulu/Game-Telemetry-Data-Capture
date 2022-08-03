@@ -23,7 +23,7 @@ protected:
     QString         m_name;
 
     //游戏是否运行
-    Q_PROPERTY(bool isRunning READ isRunning WRITE setIsRunning NOTIFY isRunningChanged)
+    Q_PROPERTY(bool isRunning READ isRunning NOTIFY isRunningChanged)
 public:
     bool isRunning() const;
     void setIsRunning(bool newIsRunning);
