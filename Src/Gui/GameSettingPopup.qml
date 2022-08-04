@@ -21,40 +21,65 @@ Popup {
     modal: true
     clip: false
     closePolicy: Popup.NoAutoClose
-    padding: 48
+    leftPadding: 48
+    rightPadding: 48
+    topPadding: 24
+    bottomMargin: 24
 
     property Game game
     property GameWithUdp udpGame: game && (game.captureMethod === Game.NetWorkUDP || game.captureMethod === Game.UDPAndSM) ?
                                       game : null
-
+    ToolTip {
+        id: toolTip
+        y: -height - 5
+    }
     contentItem: Item {
         ColumnLayout {
             width: parent.width
-            spacing: 20
+            spacing: 10
             Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTranslate("", "%1设置").arg(game ? game.name : qsTranslate("", "游戏"))
             }
+            DividingLine {}
+
+            GameInstallPathSettingItem {
+                game: popup.game
+                toolTip: toolTip
+            }
+
+            DividingLine {}
+
+            GameUDPSettingItem {
+                visible: popup.udpGame
+                game: popup.udpGame
+                toolTip: toolTip
+            }
+
             RowLayout {
                 Button {
                     Layout.preferredHeight: 44
-                    //Layout.preferredWidth: cancelButtonWidth
+                    Layout.preferredWidth: 100
                     Layout.alignment: Qt.AlignRight
+                    highlighted: true
+                    font.weight: Font.Bold
+                    font.pixelSize: 16
                     text: qsTranslate("", "确定")
-                    //onClicked: popup.close()
+                    onClicked: popup.close()
                 }
                 Item { Layout.fillWidth: true }
                 Button {
                     Layout.preferredHeight: 44
-                    //Layout.preferredWidth: cancelButtonWidth
+                    Layout.preferredWidth: 100
                     Layout.alignment: Qt.AlignLeft
+                    font.weight: Font.Bold
+                    font.pixelSize: 16
                     text: qsTranslate("","取消")
                     onClicked: popup.close()
                 }
             }
-
         }
     }// contentItem
 

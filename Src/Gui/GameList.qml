@@ -48,8 +48,8 @@ ScrollView{
                        settingPopup.open()
                    }
                    function onSetInstallPath(game) {
-                       fileDialog.open()
                        fileDialog.currentSelectedGame = game
+                       fileDialog.open()
                    }
                }// Connections
 

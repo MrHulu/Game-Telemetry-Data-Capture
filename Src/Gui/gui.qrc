@@ -6,5 +6,8 @@
         <file>GameList.qml</file>
         <file>main.qml</file>
         <file>GameSettingPopup.qml</file>
+        <file>DividingLine.qml</file>
+        <file>GameInstallPathSettingItem.qml</file>
+        <file>GameUDPSettingItem.qml</file>
     </qresource>
 </RCC>
