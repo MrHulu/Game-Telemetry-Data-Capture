@@ -28,6 +28,7 @@ Item {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignLeft
             text: qsTranslate("","UDP 配置")
+            font.weight: Font.Bold
         }
         Label {
             id: errorLabel
@@ -35,6 +36,8 @@ Item {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignLeft
             text: qsTranslate("","游戏运行中, 无法修改%1").arg(title.text)
+            color: Material.color(Material.Red)
+            font.pixelSize: 14
         }
         RowLayout {
             spacing: 8

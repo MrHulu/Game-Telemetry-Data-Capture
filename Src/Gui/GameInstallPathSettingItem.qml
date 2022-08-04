@@ -20,7 +20,7 @@ Item {
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignLeft
             text: qsTranslate("","游戏安装路径")
-            //text: "%1 %2".arg(root.height).arg(layout.height)
+            font.weight: Font.Bold
         }
         RowLayout {
             spacing: 8
