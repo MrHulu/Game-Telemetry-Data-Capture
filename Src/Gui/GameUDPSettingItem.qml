@@ -31,7 +31,7 @@ Item {
         }
         Label {
             id: errorLabel
-            visible: game && !game.isRunning
+            visible: game && game.isRunning
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignLeft
             text: qsTranslate("","游戏运行中, 无法修改%1").arg(title.text)
@@ -42,7 +42,7 @@ Item {
             TextField {
                 id: textField
                 Layout.alignment: Qt.AlignLeft
-                Layout.preferredHeight: 32
+                Layout.preferredHeight: 44
                 Layout.preferredWidth: 68
                 enabled: game && !game.isRunning
                 text: game ? game.readPort : null
@@ -52,6 +52,7 @@ Item {
                         toolTip.parent = this
                         toolTip.y = -height - 5
                         toolTip.show(qsTranslate("","非法的端口号"), 2000)
+                        text = Qt.binding(function() { return game ?  game.readPort.toFixed(0) : "HuluMan" })
                     }
                 }
                 onEditingFinished: {
