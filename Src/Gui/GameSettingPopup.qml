@@ -44,20 +44,17 @@ Popup {
                 text: qsTranslate("", "%1设置").arg(game ? game.name : qsTranslate("", "游戏"))
             }
             DividingLine {}
-
             GameInstallPathSettingItem {
                 game: popup.game
                 toolTip: toolTip
             }
-
             DividingLine {}
-
             GameUDPSettingItem {
                 visible: popup.udpGame
                 game: popup.udpGame
                 toolTip: toolTip
             }
-
+            DividingLine {}
             RowLayout {
                 Button {
                     Layout.preferredHeight: 44

@@ -45,10 +45,12 @@ Item {
             TextField {
                 id: textField
                 Layout.alignment: Qt.AlignLeft
-                Layout.preferredHeight: 44
+                //Layout.preferredHeight: 44
                 Layout.preferredWidth: 68
                 enabled: game && !game.isRunning
                 text: game ? game.readPort : null
+                verticalAlignment: TextInput.AlignVCenter
+                horizontalAlignment: TextInput.AlignHCenter
                 validator: IntValidator { bottom: 1025; top: 65535 }
                 onActiveFocusChanged: {
                     if (!acceptableInput && !activeFocus) {
