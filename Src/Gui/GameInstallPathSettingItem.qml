@@ -21,6 +21,7 @@ Item {
             horizontalAlignment: Text.AlignLeft
             text: qsTranslate("","游戏安装路径")
             font.weight: Font.Bold
+            font.pixelSize: 16
         }
         RowLayout {
             spacing: 8

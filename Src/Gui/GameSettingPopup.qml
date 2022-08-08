@@ -40,6 +40,7 @@ Popup {
             Label {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignHCenter
+                font.pixelSize: 20
                 horizontalAlignment: Text.AlignHCenter
                 text: qsTranslate("", "%1设置").arg(game ? game.name : qsTranslate("", "游戏"))
             }
@@ -50,6 +51,7 @@ Popup {
             }
             DividingLine {}
             GameUDPSettingItem {
+                id: gameUDPSettingItem
                 visible: popup.udpGame
                 game: popup.udpGame
             }
@@ -63,10 +65,12 @@ Popup {
                     font.weight: Font.Bold
                     font.pixelSize: 16
                     text: qsTranslate("", "确定")
+                    enabled: !gameUDPSettingItem.error
                     onClicked: popup.close()
                 }
                 Item { Layout.fillWidth: true }
                 Button {
+                    //visible: false
                     Layout.preferredHeight: 44
                     Layout.preferredWidth: 100
                     Layout.alignment: Qt.AlignLeft
