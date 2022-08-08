@@ -52,7 +52,6 @@ Popup {
             GameUDPSettingItem {
                 visible: popup.udpGame
                 game: popup.udpGame
-                toolTip: toolTip
             }
             DividingLine {}
             RowLayout {
