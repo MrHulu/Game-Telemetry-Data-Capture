@@ -56,6 +56,8 @@ Popup {
                 game: popup.udpGame
             }
             DividingLine {}
+            GameTelemetryConfigTutorialItem { game: popup.game }
+            DividingLine {}
             RowLayout {
                 Button {
                     Layout.preferredHeight: 44

@@ -9,5 +9,8 @@
         <file>DividingLine.qml</file>
         <file>GameInstallPathSettingItem.qml</file>
         <file>GameUDPSettingItem.qml</file>
+        <file>GameTelemetryConfigTutorialItem.qml</file>
+        <file>icons/help_hovered.svg</file>
+        <file>icons/help_normal.svg</file>
     </qresource>
 </RCC>
